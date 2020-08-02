@@ -20,5 +20,15 @@
   "bugs": {
     "url": "https://github.com/stephencottontail/raffle-block/issues"
   },
-  "homepage": "https://github.com/stephencottontail/raffle-block#readme"
+  "homepage": "https://github.com/stephencottontail/raffle-block#readme",
+  "devDependencies": {
+    "@wordpress/babel-preset-default": "^4.17.0",
+    "@wordpress/blocks": "^6.20.3",
+    "@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.1.0",
+    "gulp": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-stream": "^5.2.1"
+  }
 }

@@ -9,3 +9,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+add_action( 'wp_enqueue_scripts', function() {
+	$assets = require( 'dist/index.asset.php' );
+
+	wp_enqueue_script( 'sc-raffle-block-editor', plugins_url( 'dist/index.js', __FILE__ ), $assets['dependencies'], $assets['version'], true );
+} );
