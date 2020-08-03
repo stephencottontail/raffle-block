@@ -1,3 +1,13 @@
 import { registerBlockType } from '@wordpress/blocks'
 
-console.log( registerBlockType )
+registerBlockType( 'sc/raffle-block', {
+	'title': 'Raffle Block',
+	'category': 'common',
+	'icon': 'randomize',
+	'example': {},
+	'edit': () => {
+		return (
+			<p>Raffle Block &mdash; Editor</p>
+		)
+	}
+} )
