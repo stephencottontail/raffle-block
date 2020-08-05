@@ -15,6 +15,20 @@ class SC_Raffle extends WP_Block_Type {
 	public $editor_script = 'sc-raffle-editor-script';
 	public $editor_style = 'sc-raffle-editor-style';
 	public $style = 'sc-raffle-style';
+	/**
+	 * nb: `$attributes` doesn't get filled until you call
+	 * `setAttributes()` in JS, even if you define a default
+	 * setting when you register the block. for dynamic blocks,
+	 * you can work around this by setting `default` here. in
+	 * theory, you could have separate defaults for the editor
+	 * and the front-end.
+	 */ 
+	public $attributes = array(
+		'title' => array(
+			'type' => 'string',
+			'default' => 'Wheel of Decisions'
+		)
+	);
 
 	public function __construct() {
 		parent::__construct( $this->name, array(
@@ -24,8 +38,22 @@ class SC_Raffle extends WP_Block_Type {
 		) );
 	}
 
-	public function sc_raffle_render() {
-		return '<p>Raffle Block &mdash; Front</p>';
+	public function sc_raffle_render( $attributes ) {
+		/**
+		 * nb: because we set a default up there, we can
+		 * guarantee that `$attributes` is populated with
+		 * something and so we can forgo any checks
+		 */
+		$title = $attributes['title'];
+
+		$output = '<div class="wp-block-sc-raffle-block">';
+		$output .= sprintf( '<h2 class="wp-block-sc-raffle-block__title">%s</h3>', $title );
+		$output .= '<div class="wp-block-sc-raffle-block__new-item"><input type="text" placeholder="Add new item&mldr;" /><button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__add-new"><span class="wp-block-sc-raffle-block__button-text">Add New Item</span></button></div>';
+		$output .= '<div class="wp-block-sc-raffle-block__holder"></div>';
+		$output .= '<button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__spin"><span class="wp-block-sc-raffle-block__button-text">Spin!</span></button>';
+		$output .= '</div><!-- .wp-block-sc-raffle-block -->';
+
+		return $output;
 	}
 }
 
