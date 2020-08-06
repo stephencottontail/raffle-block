@@ -1,0 +1,98 @@
+@import "variables";
+
+.wp-block-sc-raffle-block {
+	background-color: $base-bg-color;
+	box-sizing: border-box;
+	color: $base-text-color;
+	font-family: $base-font;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	padding: $base-spacing;
+
+	& > * {
+		box-sizing: inherit;
+	}
+
+	& > * + * {
+		margin-top: $base-spacing;
+	}
+
+	&__title {
+		font-family: $base-font;
+		font-size: $base-font-size * 2;
+		font-weight: 600;
+		margin: 0;
+	}
+
+	&__new-item {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+
+		& > * {
+			flex-basis: calc( 500px * 999 - 100% * 999 );
+			flex-grow: 1;
+		}
+
+		input[type="text"] {
+			min-width: 65%;
+		}
+
+		button {
+			min-width: calc( 35% - #{$base-spacing} );
+			margin-left: $base-spacing;
+		}
+	}
+
+	&__holder {
+		background-color: rgba( $base-bg-color, 0.35 );
+		padding: $base-spacing;
+	}
+
+	&__input[type="text"] {
+		background-color: inherit;
+		border: 1px solid $base-text-color;
+		box-shadow: inset 4px 4px 8px 1px rgba( map-get( $colors, yellow-200 ), 0.75 ),
+		            inset -1px -1px 1px 1px rgba( map-get( $colors, yellow-400 ), 0.85 );
+		color: $base-text-color;
+		font-family: $base-font;
+		font-size: inherit;
+		line-height: inherit;
+		padding: ( $base-spacing / 3 ) ( $base-spacing / 2 );
+
+		&::placeholder {
+			color: $base-text-color;
+		}
+	}
+
+	&__button {
+		position: relative;
+		-webkit-appearance: none;
+		appearance: none;
+		background-color: map-get( $colors, magenta-base );
+		border: 1px solid map-get( $colors, magenta-base );
+		color: $base-bg-color;
+		font-family: $base-font;
+		font-size: inherit;
+		font-weight: 600;
+		line-height: inherit;
+		padding: ( $base-spacing / 3 ) ( $base-spacing / 2 );
+
+		&:hover,
+		&:focus {
+			background-color: map-get( $colors, magenta-500 );
+			border-color: map-get( $colors, magenta-500 );
+		}
+
+		&:active {
+			top: 2px;
+		}
+	}
+
+	&__spin {
+		display: block;
+		margin-left: auto;
+		text-align: right;
+	}
+}
