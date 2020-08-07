@@ -53,8 +53,7 @@
 	&__input[type="text"] {
 		background-color: inherit;
 		border: 1px solid $base-text-color;
-		box-shadow: inset 4px 4px 8px 1px rgba( map-get( $colors, yellow-200 ), 0.75 ),
-		            inset -1px -1px 1px 1px rgba( map-get( $colors, yellow-400 ), 0.85 );
+		box-shadow: inset 1px 1px 3px 1px rgba( map-get( $colors, yellow-400 ), 0.90 );
 		color: $base-text-color;
 		font-family: $base-font;
 		font-size: inherit;
