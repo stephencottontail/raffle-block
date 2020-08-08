@@ -47,7 +47,34 @@
 
 	&__holder {
 		background-color: rgba( $base-bg-color, 0.35 );
-		padding: $base-spacing;
+		border: 1px solid $base-text-color;
+		min-height: 116px; // we want the holding area to be a minimum of two items high
+		padding: 2px;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: map-get( $colors, blue-100 );
+		border: 1px solid map-get( $colors, blue-600 );
+		border-radius: 5px;
+		color: map-get( $colors, blue-600 );
+		padding: ( $base-spacing / 2 );
+
+		&-disabled {
+			opacity: 0.75;
+
+			button {
+				cursor: not-allowed;
+				opacity: 0.75;
+				pointer-events: none;
+
+				&::hover {
+					background-color: inherit;
+				}
+			}
+		}
 	}
 
 	&__input[type="text"] {
@@ -86,6 +113,34 @@
 
 		&:active {
 			top: 2px;
+		}
+	}
+
+	&__remove-item {
+		position: relative;
+		height: 32px;
+		width: 32px;
+		background-color: map-get( $colors, blue-base );
+		border-color: map-get( $colors, blue-base );
+		margin-left: ( $base-spacing / 2 );
+
+		&::before {
+			position: absolute;
+			top: 14px;
+			left: 4px;
+			height: 4px;
+			width: 22px;
+			background-color: map-get( $colors, blue-100 );
+			content: ' ';
+		}
+
+		&:hover {
+			background-color: map-get( $colors, blue-500 );
+		}
+
+		span {
+			position: absolute;
+			left: -9999em;
 		}
 	}
 

@@ -50,7 +50,7 @@ class SC_Raffle extends WP_Block_Type {
 		$output = '<div class="wp-block-sc-raffle-block">';
 		$output .= sprintf( '<h2 class="wp-block-sc-raffle-block__title">%s</h3>', $title );
 		$output .= '<div class="wp-block-sc-raffle-block__new-item"><input type="text" class="wp-block-sc-raffle-block__input" placeholder="Add new item&mldr;" /><button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__add-new"><span class="wp-block-sc-raffle-block__button-text">Add New Item</span></button></div>';
-		$output .= '<div class="wp-block-sc-raffle-block__holder"></div>';
+		$output .= '<div class="wp-block-sc-raffle-block__holder"><div class="wp-block-sc-raffle-block__item wp-block-sc-raffle-block__item-disabled wp-block-sc-raffle-block__item-default">Use the form to add items...<button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__remove-item"><span class="wp-block-sc-raffle-block__button-text">Remove Item</span></button></div></div>';
 		$output .= '<button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__spin"><span class="wp-block-sc-raffle-block__button-text">Spin!</span></button>';
 		$output .= '</div><!-- .wp-block-sc-raffle-block -->';
 
