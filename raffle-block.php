@@ -50,7 +50,7 @@ class SC_Raffle extends WP_Block_Type {
 		$output = '<div class="wp-block-sc-raffle-block">';
 		$output .= sprintf( '<h2 class="wp-block-sc-raffle-block__title">%s</h3>', $title );
 		$output .= '<div class="wp-block-sc-raffle-block__new-item"><input type="text" class="wp-block-sc-raffle-block__input" placeholder="Add new item&mldr;" /><button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__add-new"><span class="wp-block-sc-raffle-block__button-text">Add New Item</span></button></div>';
-		$output .= '<div class="wp-block-sc-raffle-block__holder"><div class="wp-block-sc-raffle-block__item wp-block-sc-raffle-block__item-disabled wp-block-sc-raffle-block__item-default">Use the form to add items...<button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__remove-item"><span class="wp-block-sc-raffle-block__button-text">Remove Item</span></button></div></div>';
+		$output .= '<div class="wp-block-sc-raffle-block__holder"><div class="wp-block-sc-raffle-block__item wp-block-sc-raffle-block__item-disabled wp-block-sc-raffle-block__item-default">Use the form to add items...</div></div>';
 		$output .= '<button class="wp-block-sc-raffle-block__button wp-block-sc-raffle-block__spin"><span class="wp-block-sc-raffle-block__button-text">Spin!</span></button>';
 		$output .= '</div><!-- .wp-block-sc-raffle-block -->';
 
@@ -62,14 +62,22 @@ add_action( 'init', function() {
 	$assets = require( 'dist/index.asset.php' );
 
 	wp_register_script( 'sc-raffle-editor-script', plugins_url( 'dist/index.js', __FILE__ ), $assets['dependencies'], $assets['version'], true );
+
 	if ( empty( get_option( 'raffle_block_options' ) ) ) {
 		wp_register_style( 'sc-raffle-style', plugins_url( 'dist/style.css', __FILE__ ) );
-		wp_enqueue_style( 'sc-fonts', 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap' );
+		wp_register_style( 'sc-fonts', 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap' );
 	}
 
 	$raffle = new SC_Raffle();
 	register_block_type( $raffle );
+} );
 
+add_action( 'wp_enqueue_scripts', function() {
+	if ( empty( get_option( 'raffle_block_options' ) ) ) {
+		wp_enqueue_style( 'sc-fonts' );
+	}
+
+	wp_enqueue_script( 'sc-raffle-item-management', plugins_url( 'dist/items.js', __FILE__ ), array( 'jquery' ), null, true );
 } );
 
 add_action( 'admin_menu', function() {

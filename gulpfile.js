@@ -1,4 +1,5 @@
 var gulp = require( 'gulp' ),
+	terser = require( 'gulp-terser' ),
 	sass = require( 'gulp-sass' ),
 	postCSS = require( 'gulp-postcss' ),
 	webpack = require( 'webpack' ),
@@ -11,8 +12,18 @@ gulp.task( 'styles', function() {
 		.pipe( gulp.dest( './dist' ) )
 } )
 
-gulp.task( 'scripts', function() {
-	return gulp.src( [ './index.js', './src/js/*.js' ] )
+gulp.task( 'babel', function( done ) {
+	return gulp.src( [ './index.js' ] )
 		.pipe( stream( require( './webpack.config.js' ), webpack ) )
 		.pipe( gulp.dest( './dist' ) )
+	done()
 } )
+
+gulp.task( 'others', function( done ) {
+	return gulp.src( './src/js/*.js' )
+		.pipe( terser() )
+		.pipe( gulp.dest( './dist' ) )
+	done()
+} )
+
+gulp.task( 'scripts', gulp.parallel( 'babel', 'others' ) );
