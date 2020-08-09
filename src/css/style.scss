@@ -62,6 +62,10 @@
 		color: map-get( $colors, blue-600 );
 		padding: ( $base-spacing / 2 );
 
+		&-default {
+			height: 58px; // since i removed the button from the default item i want to manually adjust the height of the default item to match the real items
+		}
+
 		&-disabled {
 			opacity: 0.75;
 
@@ -136,6 +140,7 @@
 
 		&:hover {
 			background-color: map-get( $colors, blue-500 );
+			bprder-color: map-get( $colors, blue-500 );
 		}
 
 		span {

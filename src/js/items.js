@@ -18,12 +18,14 @@
 			html: '<span class="wp-block-sc-raffle-block__button-text">Remove Item</span>'
 		} ) )
 
+		e.preventDefault()
+
 		if ( holder.find( defaultItem ) ) {
 			defaultItem.remove()
 		}
 
 		holder.append( newItem )
-		e.preventDefault()
+		input.val( '' )
 	} )
 
 	holder.on( 'click', remove, function( e ) {
