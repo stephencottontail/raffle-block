@@ -20,7 +20,7 @@ gulp.task( 'babel', function( done ) {
 } )
 
 gulp.task( 'others', function( done ) {
-	return gulp.src( './src/js/*.js' )
+	return gulp.src( './src/js/items.js' )
 		.pipe( terser() )
 		.pipe( gulp.dest( './dist' ) )
 	done()
