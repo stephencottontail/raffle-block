@@ -68,6 +68,8 @@ add_action( 'init', function() {
 		) );
 	}
 
+	wp_register_style( 'sc-raffle-editor-style', plugins_url( 'dist/editor-style.css', __FILE__ ) );
+
 	if ( empty( get_option( 'raffle_block_options' ) ) ) {
 		wp_register_style( 'sc-raffle-style', plugins_url( 'dist/style.css', __FILE__ ) );
 		wp_register_style( 'sc-fonts', 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap' );

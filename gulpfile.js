@@ -6,7 +6,7 @@ var gulp = require( 'gulp' ),
 	stream = require( 'webpack-stream' )
 
 gulp.task( 'styles', function() {
-	return gulp.src( [ './src/css/style.scss' ] )
+	return gulp.src( [ './src/css/style.scss', './src/css/editor-style.scss' ] )
 		.pipe( sass().on( 'error', sass.logError ) )
 		.pipe( postCSS() )
 		.pipe( gulp.dest( './dist' ) )
