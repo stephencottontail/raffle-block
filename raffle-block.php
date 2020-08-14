@@ -62,6 +62,11 @@ add_action( 'init', function() {
 	$assets = require( 'dist/index.asset.php' );
 
 	wp_register_script( 'sc-raffle-editor-script', plugins_url( 'dist/index.js', __FILE__ ), $assets['dependencies'], $assets['version'], true );
+	if ( WP_DEBUG ) {
+		wp_localize_script( 'sc-raffle-editor-script', 'scRaffleDebug', array(
+			'debug' => true
+		) );
+	}
 
 	if ( empty( get_option( 'raffle_block_options' ) ) ) {
 		wp_register_style( 'sc-raffle-style', plugins_url( 'dist/style.css', __FILE__ ) );
